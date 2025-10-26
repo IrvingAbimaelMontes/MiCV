@@ -4,16 +4,14 @@ Un generador de CVs moderno y profesional construido con Flask que permite crear
 
 ## ✨ Características
 
-- 🎨 **Múltiples Plantillas**: 3 diseños profesionales (Básica, Premium, Moderna)
-- 📱 **Diseño Responsive**: Funciona perfectamente en dispositivos móviles y desktop
-- 🔐 **Sistema de Autenticación**: Registro e inicio de sesión seguro
-- 📄 **Generación de PDF**: Descarga tu CV en formato PDF de alta calidad
-- ✏️ **Editor Intuitivo**: Interfaz fácil de usar para crear y editar CVs
-- 🎯 **Validación en Tiempo Real**: Validación de formularios con feedback inmediato
-- 💳 **Integración con Stripe**: Sistema de pagos para plantillas premium
-- 🔒 **Seguridad Avanzada**: Headers de seguridad y protección CSRF
+- **Múltiples Plantillas**: 3 diseños profesionales (Básica, Premium, Moderna)
+- **Diseño Responsive**: Funciona perfectamente en dispositivos móviles y desktop
+- **Sistema de Autenticación**: Registro e inicio de sesión seguro
+- **Generación de PDF**: Descarga tu CV en formato PDF de alta calidad
+- **Editor Intuitivo**: Interfaz fácil de usar para crear y editar CVs
+- **Seguridad Avanzada**: Headers de seguridad y protección CSRF
 
-## 🚀 Instalación
+## Instalación
 
 ### Requisitos Previos
 
@@ -65,7 +63,7 @@ Un generador de CVs moderno y profesional construido con Flask que permite crear
 
 La aplicación estará disponible en `http://localhost:5000`
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 cv-generator/
@@ -115,24 +113,6 @@ cv-generator/
 └── README.md
 ```
 
-## 🎨 Plantillas Disponibles
-
-### 1. Básica
-- Diseño clásico y profesional
-- Ideal para sectores tradicionales
-- Colores sobrios y tipografía clara
-
-### 2. Premium
-- Diseño elegante con gradientes
-- Perfecta para perfiles creativos
-- Elementos visuales modernos
-
-### 3. Moderna
-- Diseño minimalista y limpio
-- Ideal para profesionales tech
-- Layout de dos columnas
-
-## 🔧 Configuración
 
 ### Variables de Entorno
 
@@ -159,7 +139,7 @@ La aplicación usa SQLAlchemy con soporte para:
 - PostgreSQL (producción)
 - MySQL (producción)
 
-## 🚀 Despliegue
+## Despliegue
 
 ### Heroku
 
@@ -192,7 +172,7 @@ La aplicación usa SQLAlchemy con soporte para:
    docker run -p 5000:5000 cv-generator
    ```
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Ejecutar tests
@@ -204,10 +184,6 @@ python -m pytest --cov=app tests/
 
 ## 📝 API Endpoints
 
-### Autenticación
-- `POST /auth/register` - Registro de usuario
-- `POST /auth/login` - Inicio de sesión
-- `GET /auth/logout` - Cerrar sesión
 
 ### CVs
 - `GET /cv/create` - Formulario de creación
@@ -218,13 +194,9 @@ python -m pytest --cov=app tests/
 - `GET /cv/<id>/download` - Descargar PDF
 - `GET /cv/<id>/templates` - Seleccionar plantilla
 
-### Pagos
-- `POST /stripe/create-checkout-session` - Crear sesión de pago
-- `GET /stripe/success` - Pago exitoso
-- `GET /stripe/cancel` - Pago cancelado
-- `POST /stripe/webhook` - Webhook de Stripe
 
-## 🤝 Contribuir
+
+## Contribuir
 
 1. Fork el proyecto
 2. Crear una rama para tu feature (`git checkout -b feature/AmazingFeature`)
@@ -232,29 +204,7 @@ python -m pytest --cov=app tests/
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abrir un Pull Request
 
-## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## 👥 Autores
-
-- **Tu Nombre** - *Desarrollo inicial* - [tu-github](https://github.com/tu-usuario)
-
-## 🙏 Agradecimientos
-
-- Flask por el framework web
-- WeasyPrint por la generación de PDFs
-- Stripe por el procesamiento de pagos
-- Bootstrap por los estilos base
-
-## 📞 Soporte
-
-Si tienes preguntas o necesitas ayuda:
-
-- 📧 Email: soporte@cvgenerator.com
-- 🐛 Issues: [GitHub Issues](https://github.com/tu-usuario/cv-generator/issues)
-- 📖 Documentación: [Wiki del proyecto](https://github.com/tu-usuario/cv-generator/wiki)
-
----
 
 ⭐ ¡Si te gusta este proyecto, no olvides darle una estrella!
+
