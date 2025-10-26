@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cv.full_name }} - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: white;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 30px;
+        }
+        
+        .main-content {
+            padding: 40px;
+            background: white;
+        }
+        
+        .name {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .contact {
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section h2 {
+            font-size: 1.4rem;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .section h3 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .section-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            white-space: pre-line;
+            color: #7f8c8d;
+        }
+        
+        .main-section-content {
+            color: #2c3e50;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .skill-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8rem;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight {
+            background: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        
+        @media print {
+            .container {
+                grid-template-columns: 250px 1fr;
+            }
+            
+            .sidebar {
+                background: #2c3e50 !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+            
+            .main-content {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="name">{{ cv.full_name }}</div>
+            
+            <div class="contact">
+                <div class="contact-item">
+                    <i>📧</i>
+                    <span>{{ cv.email }}</span>
+                </div>
+                {% if cv.phone %}
+                <div class="contact-item">
+                    <i>📱</i>
+                    <span>{{ cv.phone }}</span>
+                </div>
+                {% endif %}
+                {% if cv.address %}
+                <div class="contact-item">
+                    <i>📍</i>
+                    <span>{{ cv.address }}</span>
+                </div>
+                {% endif %}
+            </div>
+            
+            {% if cv.skills %}
+            <div class="section">
+                <h2>Habilidades</h2>
+                <ul class="skill-list">
+                    {% for skill in cv.skills.split('\n') %}
+                        {% if skill.strip() %}
+                        <li>{{ skill.strip() }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="main-content">
+            {% if cv.summary %}
+            <div class="section">
+                <h3>Resumen Profesional</h3>
+                <div class="section-content main-section-content">{{ cv.summary }}</div>
+            </div>
+            {% endif %}
+            
+            {% if cv.education %}
+            <div class="section">
+                <h3>Formación Académica</h3>
+                <div class="section-content main-section-content">{{ cv.education }}</div>
+            </div>
+            {% endif %}
+            
+            {% if cv.experience %}
+            <div class="section">
+                <h3>Experiencia Laboral</h3>
+                <div class="section-content main-section-content">{{ cv.experience }}</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="templates-container">
+    <div class="templates-header">
+        <h1>Exportar Mi CV a PDF</h1>
+        <p>Selecciona una plantilla para generar tu CV en formato PDF</p>
+    </div>
+    
+    <div class="templates-grid">
+        {% for template in templates %}
+        <div class="template-card">
+            <div class="template-preview">
+                <div class="template-icon">
+                    {% if template.name == 'basic' %}
+                        📄
+                    {% elif template.name == 'premium' %}
+                        ✨
+                    {% elif template.name == 'modern' %}
+                        🎨
+                    {% endif %}
+                </div>
+                <h3>{{ template.display_name }}</h3>
+                <p>{{ template.description }}</p>
+            </div>
+            
+            <div class="template-actions">
+                <a href="{{ url_for('cv.exportar_pdf', template=template.name) }}" 
+                   class="btn btn-download">
+                     Descargar PDF
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="templates-info">
+        <div class="info-card">
+            <h3>Consejos para tu CV</h3>
+            <ul>
+                <li>Mantén la información actualizada y relevante</li>
+                <li>Usa un lenguaje claro y profesional</li>
+                <li>Incluye palabras clave de tu sector</li>
+                <li>Revisa la ortografía y gramática</li>
+                <li>Adapta el contenido según el puesto al que apliques</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="back-actions">
+        <a href="{{ url_for('cv.mi_cv') }}" class="btn btn-secondary">← Volver a Mi CV</a>
+    </div>
+</div>
+
+<style>
+.templates-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.templates-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.templates-header h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.templates-header p {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.template-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.template-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.template-preview {
+    margin-bottom: 1.5rem;
+}
+
+.template-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.template-card h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.template-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.template-actions {
+    margin-top: auto;
+}
+
+.btn-download {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.templates-info {
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    border-left: 4px solid #667eea;
+}
+
+.info-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card li {
+    padding: 0.5rem 0;
+    color: #555;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.info-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.back-actions {
+    text-align: center;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .templates-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .templates-header h1 {
+        font-size: 2rem;
+    }
+    
+    .template-card {
+        padding: 1.5rem;
+    }
+}
+</style>
+{% endblock %}

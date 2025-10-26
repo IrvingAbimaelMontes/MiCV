@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ cv.full_name }} - CV</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { text-align: center; }
+        h2 { margin-top: 20px; }
+        p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>{{ cv.full_name }}</h1>
+    <p>Email: {{ cv.email }}</p>
+    <p>Teléfono: {{ cv.phone }}</p>
+
+    <h2>Educación</h2>
+    <p>{{ cv.education }}</p>
+
+    <h2>Experiencia</h2>
+    <p>{{ cv.experience }}</p>
+
+    <h2>Habilidades</h2>
+    <p>{{ cv.skills }}</p>
+</body>
+</html>
