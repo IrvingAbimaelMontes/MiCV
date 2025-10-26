@@ -24,3 +24,6 @@ def create_app():
     app.register_blueprint(cv_bp, url_prefix='/')
     
     return app
+
+# Exponer la variable 'app' para Gunicorn
+app = create_app()
